@@ -1,0 +1,64 @@
+@startuml seq_otp_login
+
+title Sequence Diagram: Email OTP Verification (UC-03)
+
+actor "User" as U
+participant "Browser" as B
+participant "Register Page" as RP
+participant "POST /api/auth/register" as REG
+participant "POST /api/auth/otp/send" as SEND
+participant "POST /api/auth/otp/verify" as VERIFY
+participant "OTP Service" as OTP
+participant "Email Service" as EMAIL
+database "MongoDB" as DB
+
+== Registration Triggers OTP ==
+
+U -> B: Submit registration form
+B -> REG: POST {name, email, password}
+REG -> DB: Create user\n(emailVerified: false)
+DB --> REG: User created
+REG -> OTP: generateOTP(email)
+OTP -> OTP: Generate 6-digit OTP\nStore with 5-min expiry
+OTP --> REG: OTP code
+REG -> EMAIL: sendVerificationEmail\n(email, otp)
+EMAIL --> REG: Sent
+REG --> RP: 201 "Account created,\nverification email sent"
+RP --> U: Show OTP input field
+
+== User Enters OTP ==
+
+U -> RP: Enter 6-digit OTP
+RP -> VERIFY: POST {email, otp}
+VERIFY -> OTP: verifyOTP(email, otp)
+
+alt OTP invalid or expired
+  OTP --> VERIFY: false
+  VERIFY --> RP: 401 "Invalid or expired OTP"
+  RP --> U: Show error message
+
+  opt User requests resend
+    U -> RP: Click "Resend OTP"
+    RP -> SEND: POST {email}
+    SEND -> DB: Check user exists\nand not yet verified
+    DB --> SEND: User found
+    SEND -> OTP: generateOTP(email)
+    OTP -> OTP: Invalidate old OTP\nGenerate new 6-digit OTP
+    OTP --> SEND: New OTP code
+    SEND -> EMAIL: sendVerificationEmail\n(email, otp)
+    EMAIL --> SEND: Sent
+    SEND --> RP: 200 "OTP resent"
+    RP --> U: Show success message
+  end
+
+else OTP valid
+  OTP --> VERIFY: true
+  OTP -> OTP: Delete used OTP
+  VERIFY -> DB: Update user\n(emailVerified: true)
+  DB --> VERIFY: Updated
+  VERIFY --> RP: 200 "Email verified"
+  RP -> B: router.push('/login')
+  B --> U: Redirect to login page\nwith success message
+end
+
+@enduml
