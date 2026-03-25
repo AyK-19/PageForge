@@ -4,7 +4,8 @@
   "scripts": {
     "dev:web": "pnpm --filter @pageforge/web dev",
     "dev:worker": "pnpm --filter @pageforge/worker dev",
-    "dev": "concurrently \"pnpm dev:web\" \"pnpm dev:worker\"",
+    "dev:shared": "pnpm --filter @pageforge/shared dev",
+    "dev": "concurrently \"pnpm dev:shared\" \"pnpm dev:web\" \"pnpm dev:worker\"",
     "build:web": "pnpm --filter @pageforge/web build",
     "build:worker": "pnpm --filter @pageforge/worker build",
     "build:shared": "pnpm --filter @pageforge/shared build",
