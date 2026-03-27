@@ -25,6 +25,7 @@
     "ws": "^8.16.0"
   },
   "devDependencies": {
+    "@catppuccin/tailwindcss": "^0.1.6",
     "@types/bcryptjs": "^3.0.0",
     "@types/dockerode": "^3.3.28",
     "@types/node": "^20.11.0",
