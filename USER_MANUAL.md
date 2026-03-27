@@ -15,6 +15,8 @@ To begin using PageForge, you must create an account:
     -   **Paste Support:** You can copy the full 6-digit code and paste it into the first box.
     -   **Resend Logic:** The code is valid for 5 minutes. If you do not receive it, you may request a resend after a 60-second cooldown.
 
+PageForge now supports Zxcvbn-based password strength estimation. As you type, the system provides real-time feedback on password complexity to ensure account security. Additionally, the 6-digit OTP field now includes automatic clipboard sanitization, removing non-numeric characters if you paste a code containing dashes or spaces.
+
 ### 1.2 Accessing Your Account
 Log in using your registered **Email** and **Password**. PageForge uses secure session management to keep you logged in for up to 30 days on your device.
 
