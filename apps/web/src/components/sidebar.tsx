@@ -36,16 +36,16 @@ export function Sidebar() {
   };
 
   return (
-    <aside className="fixed left-0 top-0 z-40 flex h-screen w-64 flex-col border-r border-zinc-800 bg-zinc-950">
+    <aside className="fixed left-0 top-0 z-40 flex h-screen w-64 flex-col border-r border-ctp-surface0 bg-ctp-mantle">
       {/* Logo */}
-      <div className="flex h-16 items-center border-b border-zinc-800 px-6">
+      <div className="flex h-16 items-center border-b border-ctp-surface0 px-6">
         <Link href="/" className="flex items-center gap-2.5">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600">
-            <svg className="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-ctp-blue">
+            <svg className="h-4 w-4 text-ctp-base" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611l-.772.13a18.142 18.142 0 01-6.126 0l-.772-.13c-1.717-.293-2.3-2.379-1.067-3.61L5 14.5" />
             </svg>
           </div>
-          <span className="text-lg font-bold text-zinc-100">PageForge</span>
+          <span className="text-lg font-bold text-ctp-text">PageForge</span>
         </Link>
       </div>
 
@@ -60,8 +60,8 @@ export function Sidebar() {
                   href={item.href}
                   className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
                     isActive
-                      ? 'bg-zinc-800 text-zinc-100'
-                      : 'text-zinc-400 hover:bg-zinc-800/50 hover:text-zinc-200'
+                      ? 'bg-ctp-surface0 text-ctp-text'
+                      : 'text-ctp-overlay1 hover:bg-ctp-surface0/50 hover:text-ctp-subtext1'
                   }`}
                 >
                   {item.icon}
@@ -74,19 +74,19 @@ export function Sidebar() {
       </nav>
 
       {/* User section */}
-      <div className="border-t border-zinc-800 p-4">
+      <div className="border-t border-ctp-surface0 p-4">
         {session?.user ? (
           <div className="flex items-center justify-between">
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-2">
-                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-zinc-800 text-xs font-medium text-zinc-300">
+                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-ctp-surface0 text-xs font-medium text-ctp-subtext0">
                   {session.user.name?.charAt(0).toUpperCase() || 'U'}
                 </div>
                 <div className="min-w-0">
-                  <p className="truncate text-sm font-medium text-zinc-200">
+                  <p className="truncate text-sm font-medium text-ctp-subtext1">
                     {session.user.name}
                   </p>
-                  <p className="truncate text-xs text-zinc-500">
+                  <p className="truncate text-xs text-ctp-overlay0">
                     {session.user.email}
                   </p>
                 </div>
@@ -94,7 +94,7 @@ export function Sidebar() {
             </div>
             <button
               onClick={handleSignOut}
-              className="ml-2 shrink-0 rounded-lg p-1.5 text-zinc-500 hover:bg-zinc-800 hover:text-zinc-300 transition-colors"
+              className="ml-2 shrink-0 rounded-lg p-1.5 text-ctp-overlay0 hover:bg-ctp-surface0 hover:text-ctp-subtext0 transition-colors"
               title="Sign out"
             >
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
@@ -103,7 +103,7 @@ export function Sidebar() {
             </button>
           </div>
         ) : (
-          <div className="text-xs text-zinc-600">
+          <div className="text-xs text-ctp-surface2">
             PageForge v0.1.0
           </div>
         )}
