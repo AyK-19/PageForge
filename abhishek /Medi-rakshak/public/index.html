@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Medi Rakshak – Revolutionising Healthcare Access</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo" onclick="showPage('home')">
+        <span class="logo-medi">MEDI</span><span class="logo-rak">रक्षक</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#" onclick="showPage('home')"      class="nav-link" data-page="home">Home</a></li>
+        <li><a href="#" onclick="showPage('doctors')"   class="nav-link" data-page="doctors">Doctors</a></li>
+        <li><a href="#" onclick="showPage('medicines')" class="nav-link" data-page="medicines">Medicines</a></li>
+        <li><a href="#" onclick="showPage('contact')"   class="nav-link" data-page="contact">Contact</a></li>
+        <li id="dashLink" style="display:none">
+          <a href="#" onclick="showPage('dashboard')" class="nav-link" data-page="dashboard">Dashboard</a>
+        </li>
+      </ul>
+      <div class="nav-auth" id="navAuth">
+        <button class="btn-outline sm" onclick="showPage('login')">Login</button>
+        <button class="btn-primary sm" onclick="showPage('register')">Register</button>
+      </div>
+      <div class="nav-user" id="navUser" style="display:none">
+        <span id="userGreeting"></span>
+        <button class="btn-outline sm" onclick="logout()">Logout</button>
+      </div>
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
+    </div>
+  </nav>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <div id="app">
+
+    <!-- ══ HOME PAGE ══ -->
+    <div id="page-home" class="page">
+      <section class="hero">
+        <div class="hero-bg-1"></div>
+        <div class="hero-bg-2"></div>
+        <div class="hero-content">
+          <span class="pill-tag">Faculty of Technology · Delhi University</span>
+          <h1>Revolutionising<br/><span class="grad">Healthcare Access</span></h1>
+          <p class="hero-sub">A unified platform connecting hospitals, pharmacies, and patients — eliminating prescription errors, reducing wait times, and bridging India's healthcare gap.</p>
+          <div class="hero-btns">
+            <button class="btn-primary lg" onclick="showPage('register')">Get Started Free</button>
+            <button class="btn-outline lg" onclick="showPage('doctors')">Find a Doctor</button>
+          </div>
+          <div class="hero-stats">
+            <div class="hstat"><span class="hnum">3+</span><span class="hlabel">User Roles</span></div>
+            <div class="hstat"><span class="hnum">8</span><span class="hlabel">Core Features</span></div>
+            <div class="hstat"><span class="hnum">0</span><span class="hlabel">Rx Errors</span></div>
+          </div>
+        </div>
+        <div class="hero-phone">
+          <div class="phone-wrap">
+            <div class="ph-header"><span class="ph-dot"></span><span>Medi Rakshak</span></div>
+            <div class="ph-card green">✅ Prescription Verified</div>
+            <div class="ph-card blue">🏥 Dr. Ananya – 8 min wait</div>
+            <div class="ph-card teal">💊 Delivery in 30 mins</div>
+            <div class="ph-card purple">📹 Telemedicine Ready</div>
+            <div class="ph-pulse">● Live System Active</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAIN POINTS -->
+      <section class="section bg-white">
+        <div class="container">
+          <h2 class="sec-title">Problems We Solve</h2>
+          <p class="sec-sub">India's healthcare system is fragmented. Medi Rakshak bridges every gap.</p>
+          <div class="grid-4">
+            <div class="card pain-card"><div class="big-icon">📋</div><h3>Prescription Errors</h3><p>AI-powered LASA drug detection and interaction checks before dispensing.</p></div>
+            <div class="card pain-card"><div class="big-icon">🏘️</div><h3>Rural Access Gap</h3><p>Telemedicine and offline support to reach patients without connectivity.</p></div>
+            <div class="card pain-card"><div class="big-icon">🔗</div><h3>Uncoordinated Care</h3><p>One platform connecting hospitals, pharmacies, and patients seamlessly.</p></div>
+            <div class="card pain-card"><div class="big-icon">⏳</div><h3>Long Wait Times</h3><p>Real-time appointment updates and live doctor wait-time tracking.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURES -->
+      <section class="section">
+        <div class="container">
+          <h2 class="sec-title">Platform Features</h2>
+          <div class="grid-3">
+            <div class="feat-card" onclick="showPage('doctors')">
+              <div class="feat-icon teal-bg">🏥</div>
+              <h3>Book Appointments</h3>
+              <p>Browse verified doctors, check real-time availability, and book instantly.</p>
+              <span class="link-arrow">Book now →</span>
+            </div>
+            <div class="feat-card" onclick="showPage('medicines')">
+              <div class="feat-icon blue-bg">💊</div>
+              <h3>Medicine Database</h3>
+              <p>Search 8+ medicines with dosage info, schedules, and interaction alerts.</p>
+              <span class="link-arrow">Search →</span>
+            </div>
+            <div class="feat-card" onclick="showPage('dashboard')">
+              <div class="feat-icon purple-bg">🔍</div>
+              <h3>Rx Verification</h3>
+              <p>Upload prescriptions for instant LASA drug and interaction checks.</p>
+              <span class="link-arrow">Verify →</span>
+            </div>
+            <div class="feat-card" onclick="showPage('dashboard')">
+              <div class="feat-icon orange-bg">🚚</div>
+              <h3>Home Delivery</h3>
+              <p>Order medicines and get them delivered via local pharmacists.</p>
+              <span class="link-arrow">Order →</span>
+            </div>
+            <div class="feat-card" onclick="showPage('doctors')">
+              <div class="feat-icon pink-bg">📹</div>
+              <h3>Telemedicine</h3>
+              <p>Schedule video consultations — for rural and urban patients alike.</p>
+              <span class="link-arrow">Schedule →</span>
+            </div>
+            <div class="feat-card" onclick="showPage('dashboard')">
+              <div class="feat-icon green-bg">📊</div>
+              <h3>Health Dashboard</h3>
+              <p>Track appointments, orders, prescriptions, and medicine reminders.</p>
+              <span class="link-arrow">View →</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="section cta-section">
+        <div class="container">
+          <div class="cta-box">
+            <h2>Ready to Transform Healthcare?</h2>
+            <p>Join our pilot program — free for early adopters.</p>
+            <button class="btn-primary lg" onclick="showPage('register')">Create Free Account →</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ══ DOCTORS PAGE ══ -->
+    <div id="page-doctors" class="page hidden">
+      <div class="page-header">
+        <div class="container">
+          <h1>Find a <span class="grad">Doctor</span></h1>
+          <p>Book verified doctors with real-time availability</p>
+        </div>
+      </div>
+      <div class="container section-pad">
+        <div id="doctorsList" class="grid-3">
+          <div class="loading-state">Loading doctors...</div>
+        </div>
+      </div>
+
+      <!-- BOOK MODAL -->
+      <div class="modal-overlay" id="bookModal" style="display:none">
+        <div class="modal">
+          <div class="modal-head">
+            <h3>Book Appointment</h3>
+            <button onclick="closeModal('bookModal')" class="close-btn">✕</button>
+          </div>
+          <div class="modal-body">
+            <p id="bookDoctorName" class="modal-sub"></p>
+            <div class="form-group">
+              <label>Date</label>
+              <input type="date" id="bookDate"/>
+            </div>
+            <div class="form-group">
+              <label>Time Slot</label>
+              <select id="bookSlot">
+                <option>09:00 AM</option><option>10:00 AM</option>
+                <option>11:00 AM</option><option>12:00 PM</option>
+                <option>02:00 PM</option><option>03:00 PM</option>
+                <option>04:00 PM</option><option>05:00 PM</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Notes (optional)</label>
+              <textarea id="bookNotes" rows="3" placeholder="Describe your symptoms..."></textarea>
+            </div>
+            <div class="form-group">
+              <label>Also book telemedicine session?</label>
+              <select id="bookTele">
+                <option value="0">No — in-person visit</option>
+                <option value="1">Yes — video consultation</option>
+              </select>
+            </div>
+            <button class="btn-primary full" onclick="confirmBooking()">Confirm Booking</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ MEDICINES PAGE ══ -->
+    <div id="page-medicines" class="page hidden">
+      <div class="page-header">
+        <div class="container">
+          <h1>Medicine <span class="grad">Database</span></h1>
+          <p>Search medicines, check schedules, and order with home delivery</p>
+        </div>
+      </div>
+      <div class="container section-pad">
+        <div class="search-bar">
+          <input type="text" id="medSearch" placeholder="🔍  Search by medicine name, generic name, or category..." oninput="searchMedicines(this.value)"/>
+        </div>
+        <div id="medicinesList" class="medicines-grid">
+          <div class="loading-state">Loading medicines...</div>
+        </div>
+      </div>
+
+      <!-- ORDER MODAL -->
+      <div class="modal-overlay" id="orderModal" style="display:none">
+        <div class="modal">
+          <div class="modal-head">
+            <h3>Order Medicine</h3>
+            <button onclick="closeModal('orderModal')" class="close-btn">✕</button>
+          </div>
+          <div class="modal-body">
+            <p id="orderMedName" class="modal-sub"></p>
+            <div class="form-group">
+              <label>Quantity</label>
+              <input type="number" id="orderQty" value="1" min="1" max="10"/>
+            </div>
+            <div class="form-group">
+              <label>Delivery Address</label>
+              <textarea id="orderAddress" rows="2" placeholder="Enter full delivery address..."></textarea>
+            </div>
+            <div id="orderTotal" class="order-total"></div>
+            <button class="btn-primary full" onclick="confirmOrder()">Place Order</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ CONTACT PAGE ══ -->
+    <div id="page-contact" class="page hidden">
+      <div class="page-header">
+        <div class="container">
+          <h1>Get In <span class="grad">Touch</span></h1>
+          <p>Partner with us, join our pilot, or share feedback</p>
+        </div>
+      </div>
+      <div class="container section-pad">
+        <div class="contact-layout">
+          <div class="contact-form-card">
+            <h2>Send a Message</h2>
+            <div id="contactSuccess" class="success-banner hidden">✅ Message sent! We'll respond soon.</div>
+            <div class="form-group"><label>Full Name *</label><input type="text" id="cName" placeholder="Your name"/></div>
+            <div class="form-group"><label>Email *</label><input type="email" id="cEmail" placeholder="your@email.com"/></div>
+            <div class="form-group">
+              <label>I am a...</label>
+              <select id="cRole">
+                <option value="">Select role</option>
+                <option>Patient / Individual</option>
+                <option>Pharmacist</option>
+                <option>Doctor / Hospital</option>
+                <option>Investor / Partner</option>
+                <option>Researcher</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Message *</label><textarea id="cMsg" rows="5" placeholder="Tell us about your interest or feedback..."></textarea></div>
+            <button class="btn-primary full" onclick="submitContact()">Send Message →</button>
+          </div>
+          <div class="contact-info">
+            <div class="info-card"><h3>🏛️ Institution</h3><p>Faculty of Technology<br/>Delhi University, Delhi</p></div>
+            <div class="info-card"><h3>🤝 Partnerships</h3><p>We seek pilots with hospitals, pharmacies, IMA and DMA.</p></div>
+            <div class="info-card">
+              <h3>👥 Team</h3>
+              <p>Aaryan Gupta (Founder)<br/>Abhishek Kumar<br/>Ayush Kukreti<br/>Praveen Jain<br/>Shubham Kumar</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ LOGIN PAGE ══ -->
+    <div id="page-login" class="page hidden">
+      <div class="auth-wrap">
+        <div class="auth-card">
+          <div class="auth-logo"><span class="logo-medi">MEDI</span><span class="logo-rak">रक्षक</span></div>
+          <h2>Welcome Back</h2>
+          <p class="auth-sub">Login to your account</p>
+          <div id="loginError" class="error-banner hidden"></div>
+          <div class="form-group"><label>Email</label><input type="email" id="loginEmail" placeholder="your@email.com"/></div>
+          <div class="form-group"><label>Password</label><input type="password" id="loginPassword" placeholder="••••••••"/></div>
+          <button class="btn-primary full" onclick="doLogin()">Login →</button>
+          <p class="auth-switch">No account? <a href="#" onclick="showPage('register')">Register here</a></p>
+          <div class="demo-accounts">
+            <p>🔑 Demo accounts:</p>
+            <button class="demo-btn" onclick="fillDemo('admin@medirakshak.com','admin123')">Admin</button>
+            <button class="demo-btn" onclick="fillDemo('ravi@example.com','pass123')">Patient</button>
+            <button class="demo-btn" onclick="fillDemo('dr.ananya@medirakshak.com','admin123')">Doctor</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ REGISTER PAGE ══ -->
+    <div id="page-register" class="page hidden">
+      <div class="auth-wrap">
+        <div class="auth-card wide">
+          <div class="auth-logo"><span class="logo-medi">MEDI</span><span class="logo-rak">रक्षक</span></div>
+          <h2>Create Account</h2>
+          <p class="auth-sub">Join and access all features for free</p>
+          <div id="regError" class="error-banner hidden"></div>
+          <div class="form-row">
+            <div class="form-group"><label>Full Name *</label><input type="text" id="regName" placeholder="Your full name"/></div>
+            <div class="form-group"><label>Email *</label><input type="email" id="regEmail" placeholder="your@email.com"/></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Password *</label><input type="password" id="regPassword" placeholder="Min 6 characters"/></div>
+            <div class="form-group">
+              <label>Role</label>
+              <select id="regRole">
+                <option value="patient">Patient</option>
+                <option value="pharmacist">Pharmacist</option>
+                <option value="doctor">Doctor</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Phone</label><input type="text" id="regPhone" placeholder="10-digit mobile number"/></div>
+            <div class="form-group"><label>Address</label><input type="text" id="regAddress" placeholder="City, State"/></div>
+          </div>
+          <button class="btn-primary full" onclick="doRegister()">Create Account →</button>
+          <p class="auth-switch">Already have an account? <a href="#" onclick="showPage('login')">Login here</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ DASHBOARD PAGE ══ -->
+    <div id="page-dashboard" class="page hidden">
+      <div class="page-header">
+        <div class="container">
+          <h1>Your <span class="grad">Dashboard</span></h1>
+          <p id="dashSubtitle">Manage your healthcare</p>
+        </div>
+      </div>
+      <div class="container section-pad">
+        <div class="tab-bar" id="dashTabs">
+          <button class="tab active" data-tab="overview"      onclick="switchTab('overview')">Overview</button>
+          <button class="tab"        data-tab="appointments"  onclick="switchTab('appointments')">Appointments</button>
+          <button class="tab"        data-tab="prescriptions" onclick="switchTab('prescriptions')">Prescriptions</button>
+          <button class="tab"        data-tab="orders"        onclick="switchTab('orders')">Orders</button>
+          <button class="tab"        data-tab="verify"        onclick="switchTab('verify')">Verify Rx</button>
+          <button class="tab admin-tab hidden" data-tab="admin" onclick="switchTab('admin')">Admin</button>
+        </div>
+
+        <!-- OVERVIEW -->
+        <div id="tab-overview" class="tab-content">
+          <div class="stats-grid" id="overviewStats"></div>
+          <div class="quick-actions">
+            <h3>Quick Actions</h3>
+            <div class="qa-grid">
+              <button class="qa-btn" onclick="showPage('doctors')">🏥 Book Appointment</button>
+              <button class="qa-btn" onclick="showPage('medicines')">💊 Order Medicine</button>
+              <button class="qa-btn" onclick="switchTab('verify')">🔍 Verify Prescription</button>
+              <button class="qa-btn" onclick="switchTab('appointments')">📅 My Appointments</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- APPOINTMENTS -->
+        <div id="tab-appointments" class="tab-content hidden">
+          <div class="tab-head">
+            <h3>My Appointments</h3>
+            <button class="btn-primary sm" onclick="showPage('doctors')">+ Book New</button>
+          </div>
+          <div id="apptList"></div>
+        </div>
+
+        <!-- PRESCRIPTIONS -->
+        <div id="tab-prescriptions" class="tab-content hidden">
+          <h3>My Prescriptions</h3>
+          <div id="rxList"></div>
+        </div>
+
+        <!-- ORDERS -->
+        <div id="tab-orders" class="tab-content hidden">
+          <h3>My Orders</h3>
+          <div id="orderList"></div>
+        </div>
+
+        <!-- VERIFY RX -->
+        <div id="tab-verify" class="tab-content hidden">
+          <div class="verify-card">
+            <h3>🔍 Prescription Verification</h3>
+            <p>Add medicines to check for LASA drug flags and interaction warnings.</p>
+            <div class="med-adder">
+              <input type="text" id="vMedName" placeholder="Medicine name (e.g. Azithromycin 500mg)" onkeypress="if(event.key==='Enter') addVerifyMed()"/>
+              <button class="btn-outline sm" onclick="addVerifyMed()">+ Add</button>
+            </div>
+            <div id="verifyMedList" class="verify-med-list"></div>
+            <button class="btn-primary full" id="verifyBtn" onclick="runVerification()" style="display:none">Run Verification →</button>
+            <div id="verifyResult" class="verify-result hidden"></div>
+          </div>
+        </div>
+
+        <!-- ADMIN -->
+        <div id="tab-admin" class="tab-content hidden">
+          <h3>Admin Dashboard</h3>
+          <div id="adminStats" class="stats-grid"></div>
+          <div class="admin-sections">
+            <div>
+              <h4>Recent Contact Messages</h4>
+              <div id="adminContacts"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /#app -->
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <span class="logo-medi">MEDI</span><span class="logo-rak">रक्षक</span>
+        <p>Faculty of Technology, Delhi University</p>
+      </div>
+      <div class="footer-links">
+        <a href="#" onclick="showPage('home')">Home</a>
+        <a href="#" onclick="showPage('doctors')">Doctors</a>
+        <a href="#" onclick="showPage('medicines')">Medicines</a>
+        <a href="#" onclick="showPage('contact')">Contact</a>
+      </div>
+    </div>
+    <p class="footer-copy">©️ 2024 Medi Rakshak · All rights reserved</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
