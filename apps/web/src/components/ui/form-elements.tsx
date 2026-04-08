@@ -18,13 +18,13 @@ export function Button({
   ...props
 }: ButtonProps) {
   const baseClasses =
-    'inline-flex items-center justify-center font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-950 disabled:opacity-50 disabled:cursor-not-allowed';
+    'inline-flex items-center justify-center font-medium rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-ctp-base disabled:opacity-50 disabled:cursor-not-allowed';
 
   const variantClasses = {
-    primary: 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500',
-    secondary: 'bg-zinc-800 text-zinc-100 hover:bg-zinc-700 focus:ring-zinc-500 border border-zinc-700',
-    danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500',
-    ghost: 'text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800 focus:ring-zinc-500',
+    primary: 'bg-ctp-blue text-ctp-base hover:bg-ctp-sapphire focus:ring-ctp-blue',
+    secondary: 'bg-ctp-surface0 text-ctp-text hover:bg-ctp-surface1 focus:ring-ctp-surface2 border border-ctp-surface1',
+    danger: 'bg-ctp-red text-ctp-base hover:bg-ctp-maroon focus:ring-ctp-red',
+    ghost: 'text-ctp-overlay1 hover:text-ctp-text hover:bg-ctp-surface0 focus:ring-ctp-surface2',
   };
 
   const sizeClasses = {
@@ -71,18 +71,18 @@ export function Input({ label, error, className = '', id, ...props }: InputProps
   return (
     <div className="space-y-1.5">
       {label && (
-        <label htmlFor={inputId} className="block text-sm font-medium text-zinc-300">
+        <label htmlFor={inputId} className="block text-sm font-medium text-ctp-subtext0">
           {label}
         </label>
       )}
       <input
         id={inputId}
-        className={`w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-100 placeholder-zinc-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors ${
-          error ? 'border-red-500' : ''
+        className={`w-full rounded-lg border border-ctp-surface1 bg-ctp-mantle px-3 py-2 text-sm text-ctp-text placeholder-ctp-overlay0 focus:border-ctp-blue focus:outline-none focus:ring-1 focus:ring-ctp-blue transition-colors ${
+          error ? 'border-ctp-red' : ''
         } ${className}`}
         {...props}
       />
-      {error && <p className="text-sm text-red-400">{error}</p>}
+      {error && <p className="text-sm text-ctp-red">{error}</p>}
     </div>
   );
 }
@@ -99,17 +99,17 @@ export function Select({ label, options, className = '', id, ...props }: SelectP
   return (
     <div className="space-y-1.5">
       {label && (
-        <label htmlFor={selectId} className="block text-sm font-medium text-zinc-300">
+        <label htmlFor={selectId} className="block text-sm font-medium text-ctp-subtext0">
           {label}
         </label>
       )}
       <select
         id={selectId}
-        className={`w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-100 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors ${className}`}
+        className={`w-full rounded-lg border border-ctp-surface1 bg-ctp-mantle px-3 py-2 text-sm text-ctp-text focus:border-ctp-blue focus:outline-none focus:ring-1 focus:ring-ctp-blue transition-colors ${className}`}
         {...props}
       >
         {options.map((opt) => (
-          <option key={opt.value} value={opt.value}>
+          <option key={opt.value} value={opt.value} className="bg-ctp-mantle text-ctp-text">
             {opt.label}
           </option>
         ))}
@@ -129,13 +129,13 @@ export function Textarea({ label, className = '', id, ...props }: TextareaProps)
   return (
     <div className="space-y-1.5">
       {label && (
-        <label htmlFor={textareaId} className="block text-sm font-medium text-zinc-300">
+        <label htmlFor={textareaId} className="block text-sm font-medium text-ctp-subtext0">
           {label}
         </label>
       )}
       <textarea
         id={textareaId}
-        className={`w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-100 placeholder-zinc-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors ${className}`}
+        className={`w-full rounded-lg border border-ctp-surface1 bg-ctp-mantle px-3 py-2 text-sm text-ctp-text placeholder-ctp-overlay0 focus:border-ctp-blue focus:outline-none focus:ring-1 focus:ring-ctp-blue transition-colors ${className}`}
         {...props}
       />
     </div>
