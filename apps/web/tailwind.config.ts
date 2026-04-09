@@ -20,9 +20,19 @@ const config: Config = {
           800: '#1e40af',
           900: '#1e3a8a',
         },
+        // Adding a secondary slate palette for better UI contrast
+        secondary: {
+          50: '#f8fafc',
+          400: '#94a3b8',
+          900: '#0f172a',
+        },
       },
       fontFamily: {
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+      },
+      // Adding custom animations for build status indicators
+      animation: {
+        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
     },
   },
